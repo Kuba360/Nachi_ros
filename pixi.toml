@@ -1,0 +1,121 @@
+[workspace]
+name = "robostack"
+description = "Development environment for RoboStack ROS packages"
+channels = ["https://prefix.dev/conda-forge"]
+platforms = ["win-64"]
+
+# This will automatically activate the ros workspace on activation
+[target.win.activation]
+scripts = ["install/setup.bat"]
+
+# To build you can use - `pixi run -e <ros distro> build <Any other temporary args>`
+[feature.build.target.win-64.tasks]
+build = "colcon build --merge-install --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DPython_FIND_VIRTUALENV=ONLY -DPython3_FIND_VIRTUALENV=ONLY"
+
+# Dependencies used by all environments
+[dependencies]
+python = "*"
+# Build tools
+compilers = "*"
+cmake = "*"
+pkg-config = "*"
+make = "*"
+ninja = "*"
+# ROS specific tools
+rosdep = "*"
+colcon-common-extensions = "*"
+ros-dev-tools = ">=1.0.3,<2"
+
+# Define all the different ROS environments
+# Each environment corresponds to a different ROS distribution
+# and can be activated using the `pixi run/shell -e <environment>` command.
+[environments]
+jazzy = { features = ["jazzy", "build"] }
+lyrical = { features = ["lyrical", "build"] }
+
+
+### ROS Jazzy ####
+[feature.jazzy]
+channels = ["https://prefix.dev/robostack-jazzy"]
+
+[feature.jazzy.dependencies]
+ros-jazzy-desktop = "*"
+ros-jazzy-slam-toolbox = "*"
+ros-jazzy-nav2-planner = "*"
+ros-jazzy-nav2-bringup = "*"
+ros-jazzy-nav2-smoother = "*"
+ros-jazzy-nav2-behaviors = "*"
+ros-jazzy-nav2-costmap-2d = "*"
+ros-jazzy-nav2-voxel-grid = "*"
+ros-jazzy-nav2-map-server = "*"
+ros-jazzy-nav2-controller = "*"
+ros-jazzy-nav2-smac-planner = "*"
+ros-jazzy-nav2-loopback-sim = "*"
+ros-jazzy-nav2-rviz-plugins = "*"
+ros-jazzy-nav2-bt-navigator = "*"
+ros-jazzy-nav2-behavior-tree = "*"
+ros-jazzy-nav2-navfn-planner = "*"
+ros-jazzy-nav2-dwb-controller = "*"
+ros-jazzy-nav2-mppi-controller = "*"
+ros-jazzy-nav2-simple-commander = "*"
+ros-jazzy-nav2-collision-monitor = "*"
+ros-jazzy-nav2-velocity-smoother = "*"
+ros-jazzy-nav2-lifecycle-manager = "*"
+ros-jazzy-nav2-waypoint-follower = "*"
+ros-jazzy-nav2-theta-star-planner = "*"
+ros-jazzy-nav2-graceful-controller = "*"
+ros-jazzy-nav2-constrained-smoother = "*"
+ros-jazzy-nav2-rotation-shim-controller = "*"
+ros-jazzy-nav2-regulated-pure-pursuit-controller = "*"
+ros-jazzy-nav2-amcl = "*"
+ros-jazzy-nav2-util = "*"
+
+
+#pixi search *jazzy*nav* -p win-64 -c https://prefix.dev/robostack-jazzy
+#pixi update 
+
+
+### ROS Lyrical ####
+[feature.lyrical]
+channels = ["https://prefix.dev/robostack-lyrical"]
+
+[feature.lyrical.dependencies]
+ros-lyrical-desktop = ">=0.13.0,<0.14"
+ros-dev-tools = ">=1.0.3,<2"
+ros-lyrical-ros2-control = ">=6.10.1,<7"
+ros-lyrical-backward-ros = ">=1.0.8,<2"
+ros-lyrical-hardware-interface = ">=6.10.1,<7"
+ros-lyrical-pluginlib = ">=5.8.5,<6"
+ros-lyrical-rclcpp = ">=32.0.3,<33"
+ros-lyrical-rclcpp-lifecycle = ">=32.0.3,<33"
+ros-lyrical-controller-manager = ">=6.10.1,<7"
+ros-lyrical-forward-command-controller = ">=6.9.0,<7"
+ros-lyrical-joint-state-broadcaster = ">=6.9.0,<7"
+ros-lyrical-joint-state-publisher-gui = ">=2.4.3,<3"
+ros-lyrical-joint-trajectory-controller = ">=6.9.0,<7"
+ros-lyrical-robot-state-publisher = ">=3.5.6,<4"
+ros-lyrical-rviz2 = ">=15.2.6,<16"
+ros-lyrical-xacro = ">=2.1.1,<3"
+ros-lyrical-ros2controlcli = ">=6.10.1,<7"
+ros-lyrical-ament-cmake = ">=2.8.8,<3"
+ros-lyrical-ros2-control-cmake = ">=0.3.0,<0.4"
+ros-lyrical-moveit = ">=2.15.2,<3"
+ros-lyrical-moveit-configs-utils = ">=2.15.2,<3"
+ros-lyrical-moveit-ros-move-group = ">=2.15.2,<3"
+ros-lyrical-moveit-kinematics = ">=2.15.2,<3"
+ros-lyrical-moveit-planners-ompl = ">=2.15.2,<3"
+ros-lyrical-moveit-simple-controller-manager = ">=2.15.2,<3"
+ros-lyrical-moveit-ros-visualization = ">=2.15.2,<3"
+ros-lyrical-rviz-visual-tools = ">=4.2.0,<5"
+ros2-zenoh-cpp-vendor = "*"
+ros2-rmw-zenoh-cpp = "*"
+
+#It is necessary for fastdds on windows
+#[feature.lyrical.activation.env]
+#FASTDDS_BUILTIN_TRANSPORTS = "UDPv4"
+
+[activation.env]
+RMW_IMPLEMENTATION = "rmw_zenoh_cpp"
+
+[feature.lyrical.target.win.activation]
+scripts = ["install/setup.bat"]

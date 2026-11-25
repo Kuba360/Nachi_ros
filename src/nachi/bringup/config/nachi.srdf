@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="mz04">
+
+  <group name="manipulator">
+      <chain base_link="base_link" tip_link="tcp" />
+      <joint name="Joint_1"/>
+      <joint name="Joint_2"/>
+      <joint name="Joint_3"/>
+      <joint name="Joint_4"/>
+      <joint name="Joint_5"/>
+      <joint name="Joint_6"/>
+  </group>
+  
+  <group name="gripper">
+    <link name="Gripper" />
+    <link name="Finger1" />
+    <link name="Finger2" />
+    <joint name="Joint_finger1" />
+    <passive_joint name="Joint_finger2"/>
+  </group>
+  
+  <group_state group="gripper" name="open">
+    <joint name="Joint_finger1" value="0"/>
+    <!-- <joint name="finger2" value="0"/> -->
+  </group_state>
+  <group_state group="gripper" name="close">
+    <joint name="Joint_finger1" value="0.025"/>
+    <!-- <joint name="finger2" value="-0.025"/> -->
+  </group_state>
+
+  <group_state group="manipulator" name="home">
+    <joint name="Joint_1" value="0"/>
+    <joint name="Joint_2" value="1.5708"/>
+    <joint name="Joint_3" value="0"/>
+    <joint name="Joint_4" value="0"/>
+    <joint name="Joint_5" value="0"/>
+    <joint name="Joint_6" value="0"/>
+  </group_state>
+
+  <end_effector group="gripper" name="gripper" parent_group="manipulator" parent_link="Adapter2"/>
+
+  <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
+  <virtual_joint name="world_joint" type="fixed" parent_frame="world" child_link="base_link" />
+  <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+  <disable_collisions link1="base_link" link2="Link_1" reason="Adjacent" />
+  <disable_collisions link1="Link_1" link2="Link_2" reason="Adjacent" />
+  <disable_collisions link1="Link_2" link2="Link_3" reason="Adjacent" />
+  <disable_collisions link1="Link_3" link2="Link_4" reason="Adjacent" />
+  <disable_collisions link1="Link_4" link2="Link_5" reason="Adjacent" />
+  <disable_collisions link1="Link_5" link2="Link_6" reason="Adjacent" />    
+  <disable_collisions link1="Link_6" link2="Adapter1" reason="Adjacent" />
+  <disable_collisions link1="Link_5" link2="Adapter1" reason="Adjacent" />  
+  <disable_collisions link1="Adapter1" link2="Tf_sensor" reason="Adjacent" />
+  <disable_collisions link1="Tf_sensor" link2="Adapter2" reason="Adjacent" />
+  <disable_collisions link1="Adapter2" link2="Gripper" reason="Adjacent" />
+  <disable_collisions link1="Gripper" link2="Finger1" reason="Adjacent" />
+  <disable_collisions link1="Gripper" link2="Finger2" reason="Adjacent" />
+
+</robot>

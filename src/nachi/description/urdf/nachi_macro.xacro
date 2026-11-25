@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="MZ04">
+        <link
+            name="base_link">
+            <inertial>
+            <origin
+                xyz="-0.0443121771567585 -3.08186544127516E-05 0.0866180408282189"
+                rpy="0 0 0" />
+            <mass
+                value="3.54845778585158" />
+            <inertia
+                ixx="0.0126544828214805"
+                ixy="4.83416191158593E-06"
+                ixz="-0.000268512762718971"
+                iyy="0.0159389861241407"
+                iyz="-1.72465154795496E-05"
+                izz="0.0135722257706274" />
+            </inertial>
+            <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/base_link.STL"/>
+            </geometry>
+            <material
+                name="">
+                <color
+                rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+            </visual>
+            <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/base_link.STL"/>
+            </geometry>
+            </collision>
+        </link>
+        <link
+            name="Link_1">
+            <inertial>
+            <origin
+                xyz="-0.0200036468723817 0.000694306491099682 0.0867939075422103"
+                rpy="0 0 0" />
+            <mass
+                value="3.24281141399728" />
+            <inertia
+                ixx="0.0218241290918032"
+                ixy="-4.51172080960587E-05"
+                ixz="-0.0017712632575959"
+                iyy="0.0150179512840448"
+                iyz="-0.000187558799926936"
+                izz="0.0149754278160185" />
+            </inertial>
+            <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_1.STL"/>
+            </geometry>
+            <material
+                name="">
+                <color
+                rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+            </visual>
+            <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_1.STL"/>
+            </geometry>
+            </collision>
+        </link>
+        <joint
+            name="Joint_1"
+            type="revolute">
+            <origin
+            xyz="0 0 0.17"
+            rpy="0 0 0" />
+            <parent
+            link="base_link" />
+            <child
+            link="Link_1" />
+            <axis
+            xyz="0 0 1" />
+            <limit
+            lower="-2.9671"
+            upper="2.9671"
+            effort="0"
+            velocity="8.3776" />
+        </joint>
+        <link
+            name="Link_2">
+            <inertial>
+            <origin
+                xyz="-0.0227825102564292 -0.000558345296128584 0.128337203690729"
+                rpy="0 0 0" />
+            <mass
+                value="3.45766258457931" />
+            <inertia
+                ixx="0.0379398455440814"
+                ixy="4.32695613518817E-05"
+                ixz="0.000654624433592075"
+                iyy="0.0305811024038808"
+                iyz="-0.000230421629454749"
+                izz="0.0141126732361066" />
+            </inertial>
+            <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_2.STL"/>
+            </geometry>
+            <material
+                name="">
+                <color
+                rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+            </visual>
+            <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_2.STL"/>
+            </geometry>
+            </collision>
+        </link>
+        <joint
+            name="Joint_2"
+            type="revolute">
+            <origin
+            xyz="0 0 0.17"
+            rpy="0 1.5708 0" />
+            <parent
+            link="Link_1" />
+            <child
+            link="Link_2" />
+            <axis
+            xyz="0 -1 0" />
+            <limit
+            lower="0"
+            upper="4.1015"
+            effort="0"
+            velocity="8.0285" />
+        </joint>
+        <link
+            name="Link_3">
+            <inertial>
+            <origin
+                xyz="-0.000366870541112015 -0.000277715359193269 0.00553076196799562"
+                rpy="0 0 0" />
+            <mass
+                value="1.75360788481127" />
+            <inertia
+                ixx="0.0032224804181647"
+                ixy="4.62238751507312E-06"
+                ixz="-0.00018911569941233"
+                iyy="0.00389800391582277"
+                iyz="8.78506634307864E-07"
+                izz="0.00320667037042234" />
+            </inertial>
+            <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_3.STL"/>
+            </geometry>
+            <material
+                name="">
+                <color
+                rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+            </visual>
+            <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_3.STL"/>
+            </geometry>
+            </collision>
+        </link>
+        <joint
+            name="Joint_3"
+            type="revolute">
+            <origin
+            xyz="0 0 0.26"
+            rpy="0 0 0" />     
+            <parent
+            link="Link_2" />
+            <child
+            link="Link_3" />
+            <axis
+            xyz="0 -1 0" />
+            <limit
+            lower="-2.1817"
+            upper="4.8869"
+            effort="0"
+            velocity="9.0757" />
+        </joint>
+        <link
+            name="Link_4">
+            <inertial>
+            <origin
+                xyz="0.0959786108698618 6.55157930392735E-06 0.00304719333893255"
+                rpy="0 0 0" />
+            <mass
+                value="1.68497873114865" />
+            <inertia
+                ixx="0.00336952779535703"
+                ixy="-3.58712117428818E-06"
+                ixz="6.19443128323079E-05"
+                iyy="0.00681769635521704"
+                iyz="7.9501403451736E-07"
+                izz="0.00834055220315953" />
+            </inertial>
+            <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_4.STL"/>
+            </geometry>
+            <material
+                name="">
+                <color
+                rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+            </visual>
+            <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_4.STL"/>
+            </geometry>
+            </collision>
+        </link>
+        <joint
+            name="Joint_4"
+            type="revolute">
+            <origin
+            xyz="0.0801857676381023 0 0.025"
+            rpy="0 0 0" />
+            <parent
+            link="Link_3" />
+            <child
+            link="Link_4" />
+            <axis
+            xyz="1 0 0" />
+            <limit
+            lower="-3.3161"
+            upper="3.3161"
+            effort="0"
+            velocity="9.7738" />
+        </joint>
+        <link
+            name="Link_5">
+            <inertial>
+            <origin
+                xyz="0.0199337651539432 -0.00288368067859834 -6.65665445553909E-05"
+                rpy="0 0 0" />
+            <mass
+                value="0.335013738171629" />
+            <inertia
+                ixx="0.000328996869460152"
+                ixy="-1.15908355548103E-05"
+                ixz="3.76876352315063E-07"
+                iyy="0.000265997683761904"
+                iyz="7.82232078392669E-07"
+                izz="0.000360366291136041" />
+            </inertial>
+            <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_5.STL"/>
+            </geometry>
+            <material
+                name="">
+                <color
+                rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+            </visual>
+            <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_5.STL"/>
+            </geometry>
+            </collision>
+        </link>
+        <joint
+            name="Joint_5"
+            type="revolute">
+            <origin
+            xyz="0.19981423236145 0 0"
+            rpy="0 0 0" />
+            <parent
+            link="Link_4" />
+            <child
+            link="Link_5" />
+            <axis
+            xyz="0 -1 0" />
+            <limit
+            lower="-2.0944"
+            upper="2.0944"
+            effort="0"
+            velocity="9.7738" />
+        </joint>
+        <link
+            name="Link_6">
+            <inertial>
+            <origin
+                xyz="0.00760262862505734 -5.65914100581792E-05 0.000208283966356415"
+                rpy="0 0 0" />
+            <mass
+                value="0.0336929991038438" />
+            <inertia
+                ixx="1.61296973899364E-05"
+                ixy="2.02194325003533E-09"
+                ixz="-7.04945439598763E-09"
+                iyy="8.55156282031373E-06"
+                iyz="-5.13355230161968E-08"
+                izz="8.69381856084031E-06" />
+            </inertial>
+            <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_6.STL"/>
+            </geometry>
+            <material
+                name="">
+                <color
+                rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+            </visual>
+            <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                filename="package://nachi_mz04/meshes/Link_6.STL"/>
+            </geometry>
+            </collision>
+        </link>
+        <joint
+            name="Joint_6"
+            type="revolute">
+            <origin
+            xyz="0.0609999999842959 0 0"
+            rpy=" 1.9 0 0" />
+            <parent
+            link="Link_5" />
+            <child
+            link="Link_6" />
+            <axis
+            xyz="1 0 0" />
+            <limit
+            lower="-6.2832"
+            upper="6.2832"
+            effort="0"
+            velocity="15.708" />
+        </joint>
+
+  <xacro:include filename="$(find nachi_mz04)/urdf/gripper_tf_macro.xacro" />
+        <xacro:gripper_tf parent="Link_6"/>
+
+    </xacro:macro>
+
+</robot>

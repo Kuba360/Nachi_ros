@@ -1,0 +1,9 @@
+<library path="nachi_mz04">
+  <class name="nachi_mz04/RobotSystem"
+         type="nachi_mz04::RobotSystem"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Robot plugin hardware for nachi MZ04 robot.
+    </description>
+  </class>
+</library>
